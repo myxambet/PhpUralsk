@@ -2,6 +2,7 @@
 namespace MyProj\Controllers;
 use MyProj\View\View;
 use MyProj\Services\Db;
+
 class MainController 
 {
     private $view;
@@ -16,7 +17,8 @@ class MainController
     public function main()
     {
         $articles = $this->db->query('SELECT * FROM `articles`;');
-        var_dump($articles);
+     
+        $this->view->renderHtml('main/main.php',['articles'=>$articles]);
         //$this->view->renderHtml('main/main.php', ['articles' => $articles]);
     }
 

@@ -16,7 +16,8 @@ public function __construct()
     );
     $this->pdo->exec('SET NAMES UTF8');
 }
-public function query(string $sql, $params = []): ?array{
+public function query(string $sql, $params = []): ? array
+{
 $sth = $this->pdo->prepare($sql);
 $result = $sth->execute($params);
 if(false == $result)
