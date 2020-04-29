@@ -11,9 +11,9 @@ class View
         $this->templatesPath = $templatesPath;
     }
 
-    public function renderHtml(string $templateName, array $vars = [])
+    public function renderHtml(string $templateName)
     {
-        extract($vars);
+        
 
         include $this->templatesPath . '/' . $templateName;
     }
