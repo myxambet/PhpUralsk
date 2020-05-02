@@ -26,7 +26,10 @@ $controllerName = $controllerAndAction[0];
 $actionName = $controllerAndAction[1];
 
 $controller = new $controllerName();
+
 $controller->$actionName(...$matches);
+
+
 // if(!empty($matches)){
 //         $controller = new \MyProj\Controllers\MainController(); 
 //         $controller -> sayHello($matches[1]);

@@ -3,10 +3,15 @@
 class Db  
 {
 
+private static $instance;
+
+
+
 private $pdo;
 
-public function __construct()
+private function __construct()
 {
+   
     $dbOptions = (require __DIR__ . '/../../settings.php')['db'];
 
     $this->pdo = new \PDO(
@@ -27,4 +32,17 @@ if(false == $result)
 
 return $sth->fetchAll(\PDO::FETCH_CLASS, $className);
 }
+
+
+
+public static function getInstance():self
+{
+    if(self::$instance === null)
+    {
+        self::$instance = new self();
+
+    }
+    return self::$instance;
+}
+
 }
