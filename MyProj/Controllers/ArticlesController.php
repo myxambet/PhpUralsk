@@ -17,8 +17,18 @@ class ArticlesController
   {
     $article = Article::getById($articleId);
     
-
-      if ($article === []) {
+  
+    // $reflector = new \ReflectionObject($article);
+    // $properties = $reflector->getProperties();
+    
+    // $propertiesNames = [];
+    // foreach ($properties as $property) {
+    //     $propertiesNames[] = $property->getName();
+    // }
+    // var_dump($propertiesNames);
+    // return;
+    
+      if ($article === []) {  
         $this->view->renderHtml('errors/404.php',[],404);
         return;
       }
@@ -28,6 +38,20 @@ class ArticlesController
           'article' => $article
          
       ]);
+  }
+
+
+  public function edit(int $articleId) :void{
+    $article = Article::getbyId($articleId);
+
+    if ($article === null) {
+      $this->view->renderHtml('errors/404.php', [], 404);
+      return;
+  }
+  $article->setName('Новое название статьи');
+  $article->setText('Новый текст статьи');
+  $article->save();
+  
   }
 
 
